@@ -119,7 +119,10 @@
     [[self contentView] addSubview:[[self selectedViewController] view]];
     [[self selectedViewController] didMoveToParentViewController:self];
     
-    [self setNeedsStatusBarAppearanceUpdate];
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) 
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
 }
 
 - (void)setViewControllers:(NSArray *)viewControllers {
